@@ -31,7 +31,7 @@ class HomePage extends StatelessWidget {
                     const SizedBox(
                       width: 80,
                       height: 80,
-                      child: CircleAvatar(
+                      child: CircleAvatar(//동그라미 사진
                         backgroundImage: NetworkImage(
                             'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzAxMjdfNDQg%2FMDAxNjc0ODA4MTkxNTc4.gVATRXlifbUc0AJuGa0DQJr5jdw1eGk0JEFgtVbJRDUg.bRMYmlx-SZrkUKQ4-a82clnY9o0b7_FhlLX-SY7Fws8g.PNG.safeway1104%2F2023-01-27_17%253B27%253B30.PNG&type=sc960_832'),
                       ),
