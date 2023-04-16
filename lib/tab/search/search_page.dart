@@ -1,3 +1,4 @@
+import 'package:community/creat/creat_page.dart';
 import 'package:flutter/material.dart';
 
 class SearchPage extends StatelessWidget {
@@ -15,8 +16,15 @@ class SearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       //밑에 동그라미 버튼과 그 안에 펜 모양 주기
-      floatingActionButton: FloatingActionButton(onPressed: (){ },
-          child: const Icon(Icons.create),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          //글쓰기 버튼을 눌렀을 경우 creat_page로 이동
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const CreatePage()),
+          );
+        },
+        child: const Icon(Icons.create),
       ),
       appBar: AppBar(
         title: const Text('플러터 연습'),
