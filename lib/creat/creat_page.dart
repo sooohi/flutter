@@ -1,7 +1,10 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:io';
+
+import 'package:community/creat/create_model.dart';
 import 'package:flutter/material.dart';
 
 class CreatePage extends StatefulWidget {
+  //StatelessWidget은 변수 다룰 수 없음. 상수만 가질 수 있음
   const CreatePage({Key? key}) : super(key: key);
 
   @override
@@ -9,6 +12,10 @@ class CreatePage extends StatefulWidget {
 }
 
 class _CreatePageState extends State<CreatePage> {
+  final model = CreateModel(); //이것을 통해 동작하도록 작성할거임
+
+  File? _image; //File 뒤 ?를 붙여서 null을 허용 && file 리턴하면 여기로 받음
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +23,9 @@ class _CreatePageState extends State<CreatePage> {
         title: const Text('새 게시물'),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              //이미지 피커 실행
+            },
             icon: const Icon(Icons.send),
           ),
         ],
@@ -39,7 +48,13 @@ class _CreatePageState extends State<CreatePage> {
               ),
               const SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () async {
+                  //await 쓰려면 async 있어야함 && setState는 async와 함께 못써서 화면 갱신은 아래 따로
+                  _image = await model.getImage(); //이미지 가져옴
+
+                  //화면 갱신
+                  setState(() {});
+                },
                 child: const Text('이미지 선택'),
               ),
               //이미지가 없을 경우 Placeholder을 사용하면 x표기로 나타남. && 그것의 사이즈 지정
@@ -48,11 +63,12 @@ class _CreatePageState extends State<CreatePage> {
                   height: 300,
                   child: Placeholder()),
                */
-              Image.network(
-                'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzAxMjdfNDQg%2FMDAxNjc0ODA4MTkxNTc4.gVATRXlifbUc0AJuGa0DQJr5jdw1eGk0JEFgtVbJRDUg.bRMYmlx-SZrkUKQ4-a82clnY9o0b7_FhlLX-SY7Fws8g.PNG.safeway1104%2F2023-01-27_17%253B27%253B30.PNG&type=sc960_832',
-                width: 300,
-                //사진 가로 고정
-              ),
+              if (_image != null)
+                Image.file(//파일 속 이미지 가져옴
+                  _image!,//_image로 하면 에러나는 이유가 위에는 _image?로 지정을 했기 때문. !를 붙임으로 null이 아님을 보장
+                  width: 300,
+                  //사진 가로 고정
+                ),
             ],
           ),
         ),
