@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "750317026051",
+    "project_id": "community-project-a4c67",
+    "storage_bucket": "community-project-a4c67.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:750317026051:android:9ffc3d9603e7dce2778736",
+        "android_client_info": {
+          "package_name": "com.sohee.community"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "750317026051-q0lm7mmrou0on373snr80s4d47qj5neu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqS_1sw6cbjE8SgchZ_j_FoRuIy7hWzZE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "750317026051-q0lm7mmrou0on373snr80s4d47qj5neu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

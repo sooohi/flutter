@@ -1,7 +1,16 @@
 import 'package:community/tab/tab_page.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async{
+  //이거 없으면 에러 뜸 -> 얘가 준비될때 기다렸다가 앱 실행한다.->firebase나 카메라 쓸때 이거 넣어야 실행
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options:DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(const MyApp());
 }
 
