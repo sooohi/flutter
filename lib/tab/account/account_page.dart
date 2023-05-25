@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 
+import 'account_model.dart';
+
 class AccountPage extends StatelessWidget {
+
   const AccountPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final model = AccountModel();
     return Scaffold(
         appBar: AppBar(
           title: const Text('플러터 연습'),
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                model.logout();
+              },
               icon: const Icon(Icons.exit_to_app),
             ),
           ],
