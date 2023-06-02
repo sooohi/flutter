@@ -33,13 +33,13 @@ class AccountPage extends StatelessWidget {
                   Stack(
                     //그림 위 버튼을 덧붙이기 위해 스택 사용
                     children: [
-                      const SizedBox(
+                      SizedBox(
                         width: 80,
                         height: 80,
                         child: CircleAvatar(
                           //동그라미 사진
                           backgroundImage: NetworkImage(
-                              'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzAxMjdfNDQg%2FMDAxNjc0ODA4MTkxNTc4.gVATRXlifbUc0AJuGa0DQJr5jdw1eGk0JEFgtVbJRDUg.bRMYmlx-SZrkUKQ4-a82clnY9o0b7_FhlLX-SY7Fws8g.PNG.safeway1104%2F2023-01-27_17%253B27%253B30.PNG&type=sc960_832'),
+                              model.getProfileImageUrl()),
                         ),
                       ),
                       Container(
@@ -78,9 +78,9 @@ class AccountPage extends StatelessWidget {
                   const SizedBox(
                     height: 8,
                   ),
-                  const Text(
-                    'sooo__hi',
-                    style: TextStyle(
+                  Text(
+                    model.getNickName(),
+                    style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),

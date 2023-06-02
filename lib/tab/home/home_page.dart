@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
+import 'home_model.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    //홈 모델 불러옴
+    final model = HomeModel();
     return Scaffold(
       appBar: AppBar(
         title: const Text('PHPL'),
@@ -28,22 +32,20 @@ class HomePage extends StatelessWidget {
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
                   children: [
-                    const SizedBox(
+                    SizedBox(
                       width: 80,
                       height: 80,
                       child: CircleAvatar(//동그라미 사진
-                        backgroundImage: NetworkImage(
-                            'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzAxMjdfNDQg%2FMDAxNjc0ODA4MTkxNTc4.gVATRXlifbUc0AJuGa0DQJr5jdw1eGk0JEFgtVbJRDUg.bRMYmlx-SZrkUKQ4-a82clnY9o0b7_FhlLX-SY7Fws8g.PNG.safeway1104%2F2023-01-27_17%253B27%253B30.PNG&type=sc960_832'),
+                        backgroundImage: NetworkImage(model.getProfileImageUrl()),
                       ),
                     ),
                     const SizedBox(height: 8), //패딩 8 간격 주기
-                    const Text(
-                      'psh4619@tukorea.ac.kr',
-                      style: TextStyle(
+                    Text(model.getEmail(),
+                      style: const TextStyle(
                           //진하게
                           fontWeight: FontWeight.bold),
                     ),
-                    const Text('sooo__hi'),
+                    Text(model.getNickName()),
                     const SizedBox(height: 8), //패딩 8 간격 주기'
                     Row(
                       mainAxisSize: MainAxisSize.min,//row size 줄이기
