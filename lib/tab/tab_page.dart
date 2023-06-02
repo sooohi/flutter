@@ -1,5 +1,6 @@
 import 'package:community/tab/search/search_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterfire_ui/auth.dart';
 
 import 'account/account_page.dart';
 import 'home/home_page.dart';
@@ -19,6 +20,12 @@ class _TabPageState extends State<TabPage> {
     HomePage(),
     SearchPage(),
     AccountPage(),
+    ProfileScreen(
+      providerConfigs: [//이메일 인증
+        EmailProviderConfiguration(),
+      ],
+      avatarSize: 24,//사진 크기
+    ),
   ];
 
   @override
@@ -26,6 +33,7 @@ class _TabPageState extends State<TabPage> {
     return Scaffold(
       body:_pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         currentIndex: _currentIndex,//어떤 곳에 있는지 표시
         onTap: (index){
           //print(index);//잘나오는지 확인
@@ -46,6 +54,10 @@ class _TabPageState extends State<TabPage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Account',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle_outlined),
+            label: 'Profile',
           ),
         ],
       ),

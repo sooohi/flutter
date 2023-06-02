@@ -18,13 +18,20 @@ class AuthGate extends StatelessWidget {
       builder: (context, snapshot) {
         //User is not signed in
         //hasData는 정보가 들어있는지 확. 그래서 데이터 없으면 if다음 내용 실행. 있으면 return TabPage 표시.
-        if(!snapshot.hasData){
+        if (!snapshot.hasData) {
           //로그인 화면 제공
-          return const SignInScreen(
-              providerConfigs: [
+          return SignInScreen(
+              providerConfigs: const [
                 EmailProviderConfiguration(),
-              ]
-          );
+              ],
+              headerBuilder: (context, constraints, _) {
+                return const Center(
+                  child: Text(
+                    'flutter 연습',
+                    style: TextStyle(fontSize: 40),
+                  ),
+                );
+              });
         }
         // Render your application if authenticated
         return const TabPage();
