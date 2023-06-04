@@ -14,8 +14,15 @@ class CreatePage extends StatefulWidget {
 class _CreatePageState extends State<CreatePage> {
   final model = CreateModel(); //이것을 통해 동작하도록 작성할거임
 
+  final _titleTextController = TextEditingController();
+
   File? _image; //File 뒤 ?를 붙여서 null을 허용 && file 리턴하면 여기로 받음
 
+  @override
+  void dispose() {
+    _titleTextController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +31,12 @@ class _CreatePageState extends State<CreatePage> {
         actions: [
           IconButton(
             onPressed: () {
-              //이미지 피커 실행
+              if(_image!=null&& _titleTextController.text.isNotEmpty) {
+                //이미지 피커 실행
+                model.uplodaPsoet(
+                    _titleTextController.text, _image!,
+                );
+              }
             },
             icon: const Icon(Icons.send),
           ),
@@ -37,6 +49,7 @@ class _CreatePageState extends State<CreatePage> {
           child: Column(
             children: [
               TextField(
+                controller: _titleTextController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(16.0),
