@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:io';
 
 import 'package:community/creat/create_model.dart';
@@ -18,6 +20,7 @@ class _CreatePageState extends State<CreatePage> {
 
   File? _image; //File 뒤 ?를 붙여서 null을 허용 && file 리턴하면 여기로 받음
 
+  bool isLoading = false;
   @override
   void dispose() {
     _titleTextController.dispose();
@@ -30,13 +33,29 @@ class _CreatePageState extends State<CreatePage> {
         title: const Text('새 게시물'),
         actions: [
           IconButton(
-            onPressed: () {
+            onPressed: () async {
               if(_image!=null&& _titleTextController.text.isNotEmpty) {
+               //로딩시작
+                setState(() {
+                  isLoading = true;
+                });
+                //업로드
                 //이미지 피커 실행
-                model.uplodaPsoet(
+               await  model.uplodaPsoet(
                     _titleTextController.text, _image!,
                 );
-              }
+
+               //로딩이 끝남
+                setState(() {
+                  isLoading = true;
+                });
+
+               //여기까지 왔을 때 화면이 살아 있다면
+               if(mounted) {
+                 //끝나고 나면(글쓰고나면) 화면을 뒤로 가겠다.
+                 Navigator.pop(context);
+                }
+               }
             },
             icon: const Icon(Icons.send),
           ),
@@ -60,6 +79,8 @@ class _CreatePageState extends State<CreatePage> {
                     fillColor: Colors.white70),
               ),
               const SizedBox(height: 20),
+              //로딩 오래걸리는거 보여줌
+              if(isLoading) const CircularProgressIndicator(),
               ElevatedButton(
                 onPressed: () async {
                   //await 쓰려면 async 있어야함 && setState는 async와 함께 못써서 화면 갱신은 아래 따로
