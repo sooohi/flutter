@@ -1,6 +1,28 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:image_picker/image_picker.dart';
 
 class HomeModel {
+  final _picker = ImagePicker();
+
+  Future<void> updateProfileImage() async {
+    XFile? xfile = await _picker.pickImage(source: ImageSource.gallery);
+    if(xfile != null){
+      //선택한 사진 업로드
+      final storageRef = FirebaseStorage.instance.ref();
+      final imageRef = storageRef//uid 프로필 무작위 만듬
+          .child('user/${FirebaseAuth.instance.currentUser?.uid}/profile/${DateTime.now().microsecondsSinceEpoch}.png');
+
+      await imageRef.putFile(File(xfile.path));
+      final downloadUrl = await imageRef.getDownloadURL();
+
+      //업데이트
+      await FirebaseAuth.instance.currentUser?.updatePhotoURL(downloadUrl);
+    }
+
+  }
   String getEmail() {
     //firebase인증 정보로 로그인한 사용자 알 수 있음
     return FirebaseAuth.instance.currentUser?.email ?? '메일 없음';

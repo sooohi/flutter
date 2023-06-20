@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'home_model.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     //홈 모델 불러옴
@@ -35,8 +40,18 @@ class HomePage extends StatelessWidget {
                     SizedBox(
                       width: 80,
                       height: 80,
-                      child: CircleAvatar(//동그라미 사진
-                        backgroundImage: NetworkImage(model.getProfileImageUrl()),
+                      child: GestureDetector(//프로필 사진 바꾸기
+                        onTap: () async {
+                          await model.updateProfileImage();
+
+                          setState(() {//StatelessWidget이면 화면 갱신 못해서 위 바꿔주고 사용
+                            },
+                          );
+                          },
+                        child: CircleAvatar(//동그라미 사진
+                          backgroundImage: NetworkImage(model.getProfileImageUrl()),
+                        ),
+
                       ),
                     ),
                     const SizedBox(height: 8), //패딩 8 간격 주기
