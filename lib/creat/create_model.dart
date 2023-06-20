@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../domain/post.dart';
@@ -24,7 +25,20 @@ class CreateModel {
   //이 기능은(글 쓰기) 네트워크 경유해 오래 걸림
   //firebasefirestore에 있는 데이터를 post데이터로 변환을 함. 가지고 올때는 post.fromJson(snapshot.data()!)를 통해서 post로 변환을 하고 firestore에 쓸때는 post,Json()을 통해서 만들어줄거다.
   Future<void> uplodaPsoet(String title, File imageFile) async {
-    final postsRef = FirebaseFirestore.instance.collection('posts')
+    //이미지 업로드
+    final storageRef = FirebaseStorage.instance.ref();
+    //밀리세컨 시간 기준으로 이름 무작위 생성
+    final imageRef = storageRef
+        .child('postImages/${DateTime.now().microsecondsSinceEpoch}.png');
+
+    //이미지 url 얻음
+    await imageRef.putFile(imageFile);
+    //url 얻는 방법
+    final downloadUrl = await imageRef.getDownloadURL();
+
+    //게시물 업로드
+    final postsRef = FirebaseFirestore.instance
+        .collection('posts')
         .withConverter<Post>(
             fromFirestore: (snapshot, _) => Post.fromJson(snapshot.data()!),
             toFirestore: (post, _) => post.toJson());
@@ -35,9 +49,9 @@ class CreateModel {
     newPostRef.set(Post(
       //사전 문서 id 얻어서 id 활용해 데이터 만들 수 있음
       id: newPostRef.id,
-      userId: FirebaseAuth.instance.currentUser?.uid ??'',
+      userId: FirebaseAuth.instance.currentUser?.uid ?? '',
       title: title,
-      imageUrl: 'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzAxMjdfNDQg%2FMDAxNjc0ODA4MTkxNTc4.gVATRXlifbUc0AJuGa0DQJr5jdw1eGk0JEFgtVbJRDUg.bRMYmlx-SZrkUKQ4-a82clnY9o0b7_FhlLX-SY7Fws8g.PNG.safeway1104%2F2023-01-27_17%253B27%253B30.PNG&type=sc960_832',
+      imageUrl: downloadUrl,
     ));
   }
 }
