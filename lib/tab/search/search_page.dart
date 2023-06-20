@@ -74,9 +74,12 @@ class SearchPage extends StatelessWidget {
                             builder: (context) => DetailPostPage(post: post)),
                       );
                     },
-                    child: Image.network(
-                      post.imageUrl,
-                      fit: BoxFit.cover, //꽉 찬 이미지. grid에서는 사이즈가 정사각형으로 알아서 지정
+                    child: Hero(//애니메이션 주기
+                      tag: post.id,
+                      child: Image.network(
+                        post.imageUrl,
+                        fit: BoxFit.cover, //꽉 찬 이미지. grid에서는 사이즈가 정사각형으로 알아서 지정
+                      ),
                     ),
                   );
                 },
