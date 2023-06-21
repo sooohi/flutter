@@ -14,7 +14,7 @@ class DetailPostPage extends StatelessWidget {
     final model = DetailPostModel();
     return Scaffold(
         appBar: AppBar(
-          title: const Text('둘러보기'),
+          title: const Text('모든 게시물'),
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start, //글씨 왼쪽 정렬

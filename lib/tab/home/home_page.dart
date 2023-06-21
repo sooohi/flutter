@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             const SizedBox(height: 20), //여백 주기
             const Text(
-              '소희의 연습에 오신 것을 환영합니다', //글자 크기 변경
+              'P.H.P.L.에 오신 것을 환영합니다.', //글자 크기 변경
               style: TextStyle(fontSize: 24),
             ),
             const SizedBox(height: 20), //여백 주기
@@ -74,14 +74,14 @@ class _HomePageState extends State<HomePage> {
                         ),
                         const SizedBox(width: 4), //사진 사이 간격주기
                         Image.network(
-                          'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzAxMjdfNDQg%2FMDAxNjc0ODA4MTkxNTc4.gVATRXlifbUc0AJuGa0DQJr5jdw1eGk0JEFgtVbJRDUg.bRMYmlx-SZrkUKQ4-a82clnY9o0b7_FhlLX-SY7Fws8g.PNG.safeway1104%2F2023-01-27_17%253B27%253B30.PNG&type=sc960_832',
+                          'https://dimg.donga.com/wps/NEWS/IMAGE/2022/01/28/111500268.2.jpg',
                           width: 70,
                           height: 70,
                           fit: BoxFit.cover,
                         ),
                         const SizedBox(width: 4), //사진 사이 간격주기
                         Image.network(
-                          'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzAxMjdfNDQg%2FMDAxNjc0ODA4MTkxNTc4.gVATRXlifbUc0AJuGa0DQJr5jdw1eGk0JEFgtVbJRDUg.bRMYmlx-SZrkUKQ4-a82clnY9o0b7_FhlLX-SY7Fws8g.PNG.safeway1104%2F2023-01-27_17%253B27%253B30.PNG&type=sc960_832',
+                          'https://cdn.ksilbo.co.kr/news/photo/202206/938335_532280_3749.jpg',
                           width: 70,
                           height: 70,
                           fit: BoxFit.cover,

@@ -75,7 +75,7 @@ class _CreatePageState extends State<CreatePage> {
                     ),
                     filled: true,
                     hintStyle: TextStyle(color: Colors.grey[800]),
-                    hintText: "제목을 입력하세요",
+                    hintText: "내용을 입력하세요",
                     fillColor: Colors.white70),
               ),
               const SizedBox(height: 20),

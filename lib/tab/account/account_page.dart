@@ -14,7 +14,7 @@ class AccountPage extends StatelessWidget {
     final model = AccountModel();
     return Scaffold(
         appBar: AppBar(
-          title: const Text('플러터 연습'),
+          title: const Text('내 게시물 관리'),
           actions: [
             IconButton(
               onPressed: () {

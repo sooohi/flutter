@@ -27,7 +27,7 @@ class AuthGate extends StatelessWidget {
               headerBuilder: (context, constraints, _) {
                 return const Center(
                   child: Text(
-                    'flutter 연습',
+                    '모든 게시물',
                     style: TextStyle(fontSize: 40),
                   ),
                 );

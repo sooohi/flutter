@@ -33,7 +33,7 @@ class SearchPage extends StatelessWidget {
         child: const Icon(Icons.create),
       ),
       appBar: AppBar(
-        title: const Text('플러터 연습'),
+        title: const Text('모든 게시물'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(2.0),
