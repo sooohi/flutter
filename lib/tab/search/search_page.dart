@@ -55,7 +55,7 @@ class SearchPage extends StatelessWidget {
 
               return GridView.builder(
                 //count는 화면에 표시할 아이템의 개수가 명확하게 정해져 있을때 column이나 row쓰듯이 사용. builder는 성능 좋게, 동적으로 사용
-                itemCount: _urls.length, //gridView의 개수를 지정해야 지정한 만큼 이쁘게 나옴
+                itemCount: posts.length, //gridView의 개수를 지정해야 지정한 만큼 이쁘게 나옴
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   //crossAxisCount는 열 개수 && 사진 여백 주기
                   crossAxisCount: 3,
