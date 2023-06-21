@@ -93,12 +93,22 @@ class AccountPage extends StatelessWidget {
                     ],
                   ),
                   Column(
-                    children: const [
-                      Text(
-                        '39',
-                        style: TextStyle(fontSize: 18),
+                    children: [
+                      StreamBuilder <QuerySnapshot<Post>>(
+                        stream: model.postsStrem,
+                        builder: (context, snapshot) {
+                          int count=0;
+                          if(snapshot.hasData){//데이터가 있으면 null아님 보증하고 사이즈
+                            count = snapshot.data!.size;
+                          }
+                          //게시물 수 만큼 표시
+                          return Text(
+                            '$count',
+                            style: const TextStyle(fontSize: 18),
+                          );
+                        }
                       ),
-                      Text(
+                      const Text(
                         '게시물',
                         style: TextStyle(fontSize: 18),
                       ),
