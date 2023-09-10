@@ -1,0 +1,46 @@
+[
+    {
+        "geometry": {
+            "location": {
+                "lat": 37.3416535,
+                "lng": 126.732814
+            }
+        },
+        "name": "TIP",
+        "rating": 3.0,
+        "vicinity": "산기대학로 237 TIP"
+    },
+    {
+        "geometry": {
+            "location": {
+                "lat": 37.341597,
+                "lng": 126.731401
+            }
+        },
+        "name": "한국공학대학교 동상",
+        "rating": 5.0,
+        "vicinity": "산기대학로 237 TIP 후문"
+    },
+    {
+        "geometry": {
+            "location": {
+                "lat": 37.340684,
+                "lng": 126.733910
+            }
+        },
+        "name": "한국공학대학교 e동",
+        "rating": 1.0,
+        "vicinity": "산기대학로 237 한국공학대학교 e동"
+    },
+    {
+        "geometry": {
+            "location": {
+                "lat": 37.341597,
+                "lng": 126.731430
+            }
+        },
+        "name": "한국공학대학교 동상",
+        "rating": 5.0,
+        "vicinity": "산기대학로 237 TIP 후문"
+    }
+    ]
